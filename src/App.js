@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Registro from "./components/Registro";
+import { Container, Row, Col } from "react-bootstrap";
+import ListadoMovimientos from "./components/ListadoMovimientos";
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
-function App() {
+const App = () => {
+  const [movimientos, setMovimientos] = React.useState([
+    {
+      campoId: "2",
+      nombre: "test",
+      cantidad: 85000,
+      tipoMovimiento: "Gasto",
+    },
+    {
+      campoId: "1",
+      nombre: "Nicee",
+      cantidad: 1000,
+      tipoMovimiento: "Gasto",
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header movimientos={movimientos} />
+      <Container fluid={true}>
+        <Row>
+          <Col>
+            <Registro setMovimientos={setMovimientos} />
+          </Col>
+          <Col>
+            <ListadoMovimientos
+              movimientos={movimientos}
+              setMovimientos={setMovimientos}
+            />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
-}
+};
 
 export default App;
