@@ -16,6 +16,12 @@ const Registro = (props) => {
       console.log(values);
     },
   });
+  const validate = (props) =>{
+    const errors ={};
+    if (props.tipoMovimiento === "Gasto"){
+      
+    }
+  }
   return (
     <Card>
       <Card.Header>Registro</Card.Header>
